@@ -23,7 +23,7 @@ test("posts diagnostic to testing, throttled notice to main, nothing to main on 
   assert.equal(r.postedMain, true); assert.equal(r.postedTesting, true);
   assert.equal(tg.sent.length, 2);
   assert.match(tg.sent[0][1], /bot_a[\s\S]*402[\s\S]*SOL\/USDT/);
-  assert.equal(tg.sent[1][1], "⏳ Signal delayed — will retry on the next scan.");
+  assert.equal(tg.sent[1][1], "⏳ Signal delayed. Will retry on the next scan.");
   t += 60_000;
   r = await reportAiOutage({ ...base, error: wrap("OpenAI request failed (402): x") });
   assert.equal(r.postedMain, false); assert.equal(tg.sent.length, 3);

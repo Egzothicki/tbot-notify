@@ -15,8 +15,8 @@ await reportAiOutage({
 });
 ```
 
-- Testing group: always gets `🚨 AI outage — <bot>` with the cause (402 credits / 403 key limit / 401 / 429 / 5xx / timeout) and the error excerpt.
-- Main group: `⏳ Signal delayed — will retry on the next scan.` at most once per bot per 6h, never for timeouts.
+- Testing group: always gets `🚨 AI outage: <bot>` with the cause (402 credits / 403 key limit / 401 / 429 / 5xx / timeout) and the error excerpt.
+- Main group: `⏳ Signal delayed. Will retry on the next scan.` at most once per bot per 6h, never for timeouts.
 
 Install in a bot: `npm i github:Egzothicki/tbot-notify#v1.0.0` (dist/ is committed, no build step on install).
 Release: bump version, `npm run build && npm test`, commit dist, tag `vX.Y.Z`, push tag.

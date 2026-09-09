@@ -1,6 +1,6 @@
 {
   "name": "@egzothicki/tbot-notify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared outage/AI-failure notifications for the TradingBotTelegram competition bots",
   "type": "module",
   "main": "./dist/index.js",

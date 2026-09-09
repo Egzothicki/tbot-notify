@@ -104,18 +104,18 @@ export function classifyAiError(err: unknown): Classified {
 }
 
 const KIND_LABEL: Record<OutageKind, string> = {
-  credits: "OpenRouter credits exhausted (402) — top up at openrouter.ai",
-  key_limit: "OpenRouter key spend limit hit (403) — raise/reset the key limit",
-  auth: "AI API auth failed (401) — key invalid or rotated",
+  credits: "OpenRouter credits exhausted (402). Top up at openrouter.ai",
+  key_limit: "OpenRouter key spend limit hit (403). Raise or reset the key limit",
+  auth: "AI API auth failed (401). Key invalid or rotated",
   rate_limit: "AI API rate limited (429)",
   upstream: "AI provider/gateway error (5xx)",
-  timeout: "AI request timed out (client abort) — transient, will retry next scan",
+  timeout: "AI request timed out (client abort). Transient, will retry next scan",
   other: "AI API request failed",
 };
 
 export function formatTestingMessage(botName: string, c: Classified, ctx?: ReportAiOutageOptions["context"]): string {
   const lines = [
-    `🚨 AI outage — ${botName}`,
+    `🚨 AI outage: ${botName}`,
     `Cause: ${KIND_LABEL[c.kind]}`,
   ];
   if (ctx?.symbol) lines.push(`Symbol: ${ctx.symbol}${ctx.source ? ` (${ctx.source})` : ""}`);
@@ -126,7 +126,7 @@ export function formatTestingMessage(botName: string, c: Classified, ctx?: Repor
 }
 
 export function formatMainMessage(_c: Classified): string {
-  return "⏳ Signal delayed — will retry on the next scan.";
+  return "⏳ Signal delayed. Will retry on the next scan.";
 }
 
 /** Per-process throttle state, keyed by bot name so several bots in one process do not share it. */
